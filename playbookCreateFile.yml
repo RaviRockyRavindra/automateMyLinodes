@@ -1,0 +1,12 @@
+---
+- name: 
+  become: true
+  hosts: ansiblewebserver
+  tasks:
+  - name: creating the file named demo.sh
+    file:
+       path: /scripts/demo.sh
+       state: directory
+       mode: 700
+       owner: ravindra
+       group: sudo

@@ -17,7 +17,7 @@ git 'https://github.com/RaviRockyRavindra/automateMyLinodes.git'
 stage('execute the ansible playbook on controlled machines'){
 steps{
 sh 'ansible-playbook playbookCreateFile.yml --syntax-check'
-sh 'ansible-playbook playbookCreateFile.yml'
+sh 'ansible-playbook playbookCreateFile.yml' 
 }
 }
 

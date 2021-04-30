@@ -1,0 +1,24 @@
+pipeline{
+agent any
+tools
+{
+ansible 'ansible'
+}
+
+stages{
+
+stage('fetch the files')
+{
+steps{
+git 'https://github.com/RaviRockyRavindra/automateMyLinodes.git'
+}
+}
+
+stage('execute the ansible playbook on controlled machines'){
+steps{
+sh 'ansible-playbook playbookCreateFile.yml --syntax-check'
+sh 'ansible-playbook playbookCreateFile.yml'
+}
+}
+
+}

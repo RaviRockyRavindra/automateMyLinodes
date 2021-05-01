@@ -11,7 +11,7 @@
   - name: Enable the docker.io
     service:
        name: docker
-         state: started
+       state: started
      
 #   - name: creating the file named demo.sh
 #     file:

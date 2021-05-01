@@ -1,0 +1,3 @@
+[ansiblewebserver]
+192.168.0.109 ansible_user=ravindra
+192.168.0.111 ansible_user=ravindra

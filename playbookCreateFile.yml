@@ -3,10 +3,19 @@
   become: true
   hosts: ansiblewebserver
   tasks:
-  - name: creating the file named demo.sh
-    file:
-       path: /scripts/demo.sh
-       state: directory
-       mode: 700
-       owner: ravindra
-       group: sudo
+  - name: Install Docker
+    apt:
+       name: docker.io
+       state: latest
+    
+  - name: Enable the docker.io
+      service: docker
+      state: started
+     
+#   - name: creating the file named demo.sh
+#     file:
+#        path: /scripts/demo.sh
+#        state: directory
+#        mode: 700
+#        owner: ravindra
+#        group: sudo

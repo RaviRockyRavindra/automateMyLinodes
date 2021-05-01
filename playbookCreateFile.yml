@@ -4,13 +4,14 @@
   hosts: ansiblewebserver
   tasks:
   - name: Install Docker
-    apt:
+     apt:
        name: docker.io
        state: latest
     
   - name: Enable the docker.io
-      service: docker
-      state: started
+     service:
+       name: docker
+         state: started
      
 #   - name: creating the file named demo.sh
 #     file:

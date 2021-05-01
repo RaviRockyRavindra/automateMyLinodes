@@ -4,12 +4,12 @@
   hosts: ansiblewebserver
   tasks:
   - name: Install Docker
-     apt:
+    apt:
        name: docker.io
        state: latest
     
   - name: Enable the docker.io
-     service:
+    service:
        name: docker
          state: started
      

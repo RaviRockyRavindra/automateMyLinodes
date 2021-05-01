@@ -17,8 +17,7 @@ git branch:'main',url:'https://github.com/RaviRockyRavindra/automateMyLinodes.gi
 stage('execute the ansible playbook on controlled machines')
   {  
     steps{
-sh 'whoami'
-sh 'ansible-playbook playbookCreateFile.yml' 
+sh 'ansible-playbook -i hosts playbookCreateFile.yml' 
      }
   }
 

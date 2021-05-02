@@ -22,8 +22,8 @@
 #        mode: 700
 #        owner: ravindra
 #        group: sudo
-   hosts: ansibleYUM
-   tasks:
+  hosts: ansibleYUM
+  tasks:
     - name: installing the docker
       yum: 
         name: docker

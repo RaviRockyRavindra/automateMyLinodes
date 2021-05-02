@@ -1,5 +1,5 @@
 #httpd layer
-From httpd:latest 
+From httpd:latest
 
 #Maintainer
 MAINTAINER RavindraSaikonna

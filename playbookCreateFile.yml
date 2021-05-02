@@ -1,7 +1,6 @@
 ---
 - name: 
   become: true
-  become_user: ansible
   hosts: ansibleYUM
   tasks:
     - name: installing the docker

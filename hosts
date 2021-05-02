@@ -1,4 +1,8 @@
+#linux_vms
 [ansiblewebserver]
 192.168.0.109 ansible_user=root
 192.168.0.111 ansible_user=root
-#
+
+#aws_machine
+[ansibleYUM]
+13.127.234.160

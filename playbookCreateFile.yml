@@ -3,15 +3,17 @@
   become: true
   hosts: ansiblewebserver
   tasks:
-  - name: Install Docker
-    apt:
-       name: docker.io
-       state: latest
+    - name: run the docker containers
+      
+  # - name: Install Docker
+  #   apt:
+  #      name: docker.io
+  #      state: latest
     
-  - name: Enable the docker.io
-    service:
-       name: docker
-       state: started
+  # - name: Enable the docker.io
+  #   service:
+  #      name: docker
+  #      state: started
      
 #   - name: creating the file named demo.sh
 #     file:
@@ -20,3 +22,14 @@
 #        mode: 700
 #        owner: ravindra
 #        group: sudo
+   hosts: ansibleYUM
+   tasks:
+    - name: installing the docker
+      yum: 
+        name: docker
+        state: present
+      
+    - name: docker service enable    
+      service:
+        name: docker
+        state: started  

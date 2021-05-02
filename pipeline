@@ -4,14 +4,31 @@ tools{
     git "git"
 }
 
-stages{
-
-stage('git clone')
-{
-steps{
-git branch:'main',url:'https://github.com/RaviRockyRavindra/automateMyLinodes.git'
+environment{
+   username= '852535'
+   imageName= 'httpd_may2nd'
+   singleShot = "${username}/${imageName}"
 }
 
+stages{
+
+
+stage('building the docker image')
+{
+  steps{
+    
+    sh 'docker build . -t ${username}/{imageName}'
+  }
+}
+
+stage('docker push')
+{
+steps{
+  withCredentials([usernameColonPassword(credentialsId: '40a50224-9f4d-49e0-b88f-b4fb7e77cfcd', variable: 'dockerCred')]) {
+     sh 'docker push ${singleShot}'
+}
+ 
+}
 }
 
 stage('execute the ansible playbook on controlled machines')

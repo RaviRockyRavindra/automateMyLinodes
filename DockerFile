@@ -13,5 +13,7 @@ RUN mkdir /httpdDockerWorkspace
 #setting up working directory.
 WORKDIR /httpdDockerWorkspace
 
+
+
 # #CMD and ENTRYPOINT will execute once while we launch the container.
 # CMD [ "executable" ]

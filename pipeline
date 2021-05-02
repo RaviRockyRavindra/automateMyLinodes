@@ -17,7 +17,7 @@ stage('building the docker image')
 {
   steps{
     
-    sh 'docker build -f Dockerfile -t ${username}/${imageName}'
+    sh 'sudo docker build -f Dockerfile -t ${username}/${imageName}'
   }
 }
 
@@ -25,7 +25,7 @@ stage('docker push')
 {
 steps{
   withCredentials([usernameColonPassword(credentialsId: '40a50224-9f4d-49e0-b88f-b4fb7e77cfcd', variable: 'dockerCred')]) {
-     sh 'docker push ${singleShot}'
+     sh 'sudo docker push ${singleShot}'
 }
  
 }

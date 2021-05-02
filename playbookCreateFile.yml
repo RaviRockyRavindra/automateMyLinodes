@@ -1,27 +1,6 @@
 ---
 - name: 
   become: true
-  hosts: ansiblewebserver
-  tasks:
-    - name: run the docker containers
-      
-  # - name: Install Docker
-  #   apt:
-  #      name: docker.io
-  #      state: latest
-    
-  # - name: Enable the docker.io
-  #   service:
-  #      name: docker
-  #      state: started
-     
-#   - name: creating the file named demo.sh
-#     file:
-#        path: /scripts/demo.sh
-#        state: directory
-#        mode: 700
-#        owner: ravindra
-#        group: sudo
   hosts: ansibleYUM
   tasks:
     - name: installing the docker

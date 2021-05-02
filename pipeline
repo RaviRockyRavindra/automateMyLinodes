@@ -17,7 +17,7 @@ stage('building the docker image')
 {
   steps{
     
-    sh 'docker build . -t ${username}/${imageName}'
+    sh 'docker build -f DockerFile -t ${username}/${imageName}'
   }
 }
 

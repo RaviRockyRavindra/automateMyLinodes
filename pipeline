@@ -34,7 +34,7 @@ steps{
 stage('execute the ansible playbook on controlled machines')
   {  
     steps{
-sh 'ansible-playbook -i hosts playbookCreateFile.yml' 
+sh 'ansible-playbook -i hosts changePassword.yml' 
      }
   }
 

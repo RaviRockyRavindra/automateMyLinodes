@@ -12,9 +12,29 @@ environment{
 
 stages{
 
+  stage('echo when state')
+  {
+
+when{
+    expression{
+      BRANCH_NAME == "1tempbranch"
+    }
+  }
+
+steps{
+  echo "here we go....................................."
+}
+
+  }
+
 
 stage('building the docker image')
 {
+  when{
+    expression{
+      BRANCH_NAME == "main"
+    }
+  }
   steps{
     
     sh 'sudo docker build . -t ${username}/${imageName}'
@@ -23,6 +43,11 @@ stage('building the docker image')
 
 stage('docker push')
 {
+  when{
+    expression{
+      BRANCH_NAME == "main"
+    }
+  }
 steps{
   withCredentials([usernameColonPassword(credentialsId: '40a50224-9f4d-49e0-b88f-b4fb7e77cfcd', variable: 'dockerCred')]) {
      sh 'sudo docker push ${singleShot}'
@@ -33,6 +58,11 @@ steps{
 
 stage('execute the ansible playbook on controlled machines')
   {  
+    when{
+    expression{
+      BRANCH_NAME == "main"
+    }
+  }
     steps{
 sh 'ansible-playbook -i hosts changePassword.yml' 
      }

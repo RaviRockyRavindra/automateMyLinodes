@@ -36,7 +36,7 @@ timeout(time: 1, unit:'MINUTES')
         }
 
 steps{
-    echo ${params.RAVINDRA}
+    echo "${params.RAVINDRA}"
     }
 
 }

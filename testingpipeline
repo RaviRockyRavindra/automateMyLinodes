@@ -4,6 +4,10 @@ tools{
     git "git"
 }
 
+options{
+timeout(time: 1, unit:'MINUTES')        
+      }
+
 environment{
    username= '852535'
    imageName= 'httpd_may2nd'
@@ -22,9 +26,7 @@ steps{
 
 
 stage('checking when condition'){
-options{
-timeout(time: 1, unit:'MINUTES')        
-      }
+
         input{
             
             message "message to be displayed."

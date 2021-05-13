@@ -30,13 +30,13 @@ timeout(time: 1, units:'minutes')
             message "message to be displayed."
             ok "yes to proceed."
             parameters{
-                string(name:"ravindra", defaultValue:"defaultValue setting", description: "setting description")
-                text(name:"funny",defaultvalue:"FUNNY",description:"dummy")
+                string(name: 'RAVINDRA', defaultValue:'defaultValue setting', description: 'setting description')
+                text(name: 'FUNNY', defaultValue:'FUNNY',description:'dummy')
             }
         }
 
 steps{
-    echo ${ravindra}
+    echo ${params.RAVINDRA}
     }
 
 }

@@ -1,0 +1,36 @@
+pipeline{
+agent any
+tools{
+    git "git"
+}
+
+environment{
+   username= '852535'
+   imageName= 'httpd_may2nd'
+   singleShot = "${username}/${imageName}"
+}
+
+stages{
+stage('git checkout')
+{
+
+steps{
+  echo "common for all "
+}
+}
+
+
+
+stage('checking when condition'){
+
+steps{
+    
+    input 'message accept'
+
+    }
+
+}
+
+
+}
+}

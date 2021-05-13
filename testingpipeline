@@ -23,7 +23,7 @@ steps{
 
 stage('checking when condition'){
 options{
-timeout(time: 1, units:'minutes')        
+timeout(time: 1, unit:'minutes')        
       }
         input{
             

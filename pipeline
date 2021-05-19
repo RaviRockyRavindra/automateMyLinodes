@@ -12,61 +12,51 @@ environment{
 
 stages{
 
-  stage('echo when state')
+  stage('stage running for dev env')
   {
 
 when{
-    expression{
-      BRANCH_NAME == "1tempbranch"
-    }
+   anyOf{ 
+     expression{ BRANCH_NAME == "1tempbranch" }
+     expression{ BRANCH_NAME == "Development"}
+   }
   }
 
 steps{
-  echo "here we go....................................."
+  echo "here we go in development"
 }
 
   }
 
 
-stage('building the docker image')
-{
-  when{
-    expression{
-      BRANCH_NAME == "main"
-    }
-  }
-  steps{
-    
-    sh 'sudo docker build . -t ${username}/${imageName}'
+stage('testing on test env'){
+when{
+  not expression{
+      BRANCH_NAME == "development" || BRANCH_NAME == "Production"
   }
 }
 
-stage('docker push')
-{
-  when{
-    expression{
-      BRANCH_NAME == "main"
-    }
-  }
 steps{
-  withCredentials([usernameColonPassword(credentialsId: '40a50224-9f4d-49e0-b88f-b4fb7e77cfcd', variable: 'dockerCred')]) {
-     sh 'sudo docker push ${singleShot}'
-}
- 
+echo "here we go in testing env"
 }
 }
 
-stage('execute the ansible playbook on controlled machines')
-  {  
-    when{
-    expression{
-      BRANCH_NAME == "main"
-    }
+stage('prod env'){
+when{
+  allOf {
+    expression{ BRANCH_NAME == "Production" }
+    expression{ BUILD_NUMBER < 1000 }
   }
-    steps{
-sh 'ansible-playbook -i hosts changePassword.yml' 
-     }
-  }
+}
+steps{
+echo "inside the prod"
+}
+
+}
+
+
 
 }
 }
+
+
